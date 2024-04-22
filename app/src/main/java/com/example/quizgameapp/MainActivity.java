@@ -1,12 +1,14 @@
 package com.example.quizgameapp;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.quizgameapp.config.Constants;
 import com.example.quizgameapp.data.Question;
 import com.example.quizgameapp.databinding.ActivityMainBinding;
 import com.example.quizgameapp.helper.QuestionGenerator;
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton[] checkButtons = new RadioButton[4];
     int currentIndex = 0;
     List<Question> questions;
+    private CountDownTimer timer;
+    private int totalTime = 5*60;
+    private int timeLeft = Constants.TOTAL_EXAM_TIME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(binding.getRoot());
         
         initComponents();
+        startTimer();
+    }
+
+    private void submitTest(){
+        Toast.makeText(this, "Test Submitted", Toast.LENGTH_SHORT).show();
+    }
+    // Start Timer Method
+    private void startTimer() {
+        timer= new CountDownTimer(Constants.TOTAL_EXAM_TIME*1000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                //It runs every seconds or 1000 milliseconds
+                int min  = timeLeft/60;
+                int sec = timeLeft%60;
+                binding.timer.setText(min+" min "+sec+" sec");
+                timeLeft--;
+            }
+
+            @Override
+            public void onFinish() {
+                // When the timer is finished this runs
+                Toast.makeText(MainActivity.this, "Time is UP.!", Toast.LENGTH_SHORT).show();
+                submitTest();
+                binding.timer.setText("Finished");
+            }
+        };
+        timer.start();
     }
 
     private void initComponents() {

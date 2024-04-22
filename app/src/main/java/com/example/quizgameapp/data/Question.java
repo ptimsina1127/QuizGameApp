@@ -14,6 +14,8 @@ public class Question {
     private String answerExplanation;
     private int checkValue = -1;
 
+    private String givenAnswer="";
+
     public Question(int id, String question, String option1, String option2, String option3, String option4, String answer, String answerExplanation) {
         this.id = id;
         this.question = question;
