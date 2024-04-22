@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        android:textStyle="bold"
         android:text="Time Left: 32min 23 sec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -77,9 +78,9 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/containerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/containerButton"
         android:layout_marginTop="10dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,19 +101,34 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/submitButton"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submitButton"
-        style ="@style/Widget.Material3.Button.OutlinedButton.Icon"
-        app:icon = "@drawable/baseline_gpp_good_24"
-        app:iconGravity="textStart"
-        app:layout_constraintTop_toBottomOf="@+id/containerButton"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="9dp"
         android:text="Submit"
+        app:icon="@drawable/baseline_gpp_good_24"
+        app:iconGravity="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerButton"
         tools:layout_editor_absoluteY="10dp" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cpb_background_progressbar_color="#b6bbd8"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/primaryColor"
+        app:cpb_progressbar_width="10dp"
+        android:layout_marginRight="20dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="@+id/timer"
+        app:layout_constraintEnd_toStartOf="@+id/timer"
+        app:layout_constraintTop_toTopOf="@+id/timer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

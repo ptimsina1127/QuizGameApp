@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int sec = timeLeft%60;
                 binding.timer.setText(min+" min "+sec+" sec");
                 timeLeft--;
+
+                //Update Circular Progress bar
+                binding.circularProgressBar.setProgress((float)timeLeft/Constants.TOTAL_EXAM_TIME*100);
             }
 
             @Override
