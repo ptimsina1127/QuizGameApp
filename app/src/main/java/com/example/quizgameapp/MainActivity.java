@@ -3,6 +3,7 @@ package com.example.quizgameapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -38,6 +39,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void submitTest(){
         Toast.makeText(this, "Test Submitted", Toast.LENGTH_SHORT).show();
+        int correctAnswers = 0;
+
+        for (Question question : questions) {
+            if (question.getCheckValue() != -1) { // Ensure an option is selected
+                // Get the selected option based on the checkValue
+                String selectedOption = null;
+                int selectedOptionId = question.getCheckValue();
+                if (selectedOptionId == R.id.option1) {
+                    selectedOption = question.getOption1();
+                } else if (selectedOptionId == R.id.option2) {
+                    selectedOption = question.getOption2();
+                } else if (selectedOptionId == R.id.option3) {
+                    selectedOption = question.getOption3();
+                } else if (selectedOptionId == R.id.option4) {
+                    selectedOption = question.getOption4();
+                }
+                // Check if the selected option matches the correct answer
+                if (selectedOption != null && selectedOption.equals(question.getAnswer())) {
+                    correctAnswers++;
+                }
+            }
+        }
+
+        double scorePercentage = (double) correctAnswers / questions.size() * 100;
+
+        // Display the result to the user
+        String resultMessage = "You scored " + correctAnswers + " out of " + questions.size() +
+                ". Your score: " + scorePercentage + "%";
+
+        //Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+
+        // Optionally, navigate to ResultActivity and pass the result data
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("correctAnswers", correctAnswers);
+        intent.putExtra("totalQuestions", questions.size());
+        startActivity(intent);
     }
     // Start Timer Method
     private void startTimer() {
@@ -87,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         binding.submitButton.setOnClickListener(e->{
             submitTest();
-            Intent intent = new Intent(this,ResultActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this,ResultActivity.class);
+            //startActivity(intent);
             //finish(); Only if we want to Close the main activity. we will keep it in here.
 
         });
