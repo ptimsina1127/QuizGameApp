@@ -1,5 +1,6 @@
 package com.example.quizgameapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -83,6 +84,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         binding.previousButton.setOnClickListener(e->{
             previousQuestion();
+        });
+        binding.submitButton.setOnClickListener(e->{
+            submitTest();
+            Intent intent = new Intent(this,ResultActivity.class);
+            startActivity(intent);
+            //finish(); Only if we want to Close the main activity. we will keep it in here.
+
         });
 
     }
