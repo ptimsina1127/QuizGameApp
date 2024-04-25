@@ -124,10 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         binding.submitButton.setOnClickListener(e->{
             submitTest();
-            //Intent intent = new Intent(this,ResultActivity.class);
-            //startActivity(intent);
-            //finish(); Only if we want to Close the main activity. we will keep it in here.
-
         });
 
     }

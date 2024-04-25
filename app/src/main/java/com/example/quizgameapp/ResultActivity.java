@@ -1,6 +1,7 @@
 package com.example.quizgameapp;
 
 import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,16 @@ public class ResultActivity extends AppCompatActivity {
         TextView scoreTextView = findViewById(R.id.scoreTextView);
         scoreTextView.setText("You scored " + correctAnswers + " out of " + totalQuestions +
                 ". Your score: " + scorePercentage + "%");
+
+        // runs the animation drawable
+        ImageView img = (ImageView)findViewById(R.id.imageViewAnimation);
+        img.setBackgroundResource(R.drawable.animation);
+
+        // Get the AnimationDrawable object.
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        // Start the animation (looped playback by default).
+        frameAnimation.start();
     }
 }
 

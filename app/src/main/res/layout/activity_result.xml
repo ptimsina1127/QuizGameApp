@@ -26,4 +26,12 @@
         android:layout_marginStart="20dp"
         android:textColor="@android:color/black"/>
 
+    <ImageView
+        android:id="@+id/imageViewAnimation"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="100dp"
+        android:layout_width="221dp"
+        android:layout_height="209dp"
+        android:src="@drawable/transition" />
+
 </RelativeLayout>

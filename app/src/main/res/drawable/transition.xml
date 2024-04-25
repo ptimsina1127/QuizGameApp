@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Transition Drawables allow to define transitions which can be triggered in the coding. -->
+
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/quiz1" />
+    <item android:drawable="@drawable/quiz2" />
+</transition>
